@@ -1,11 +1,16 @@
 class PostsController < ApplicationController
   before_action :set_post,only:[:show,:edit,:update,:destroy]
+
   def index
     @posts = Post.all
   end
 
   def new
+    if params[:back]
+    @post = Post.new(post_params)
+    else
     @post = Post.new
+    end
   end
 
   def create
@@ -23,7 +28,11 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.new(post_params)
+  end
 
+  def show
+    @post = Post.find(params[:id])
   end
 
   def update
@@ -32,6 +41,11 @@ class PostsController < ApplicationController
     else
     render 'edit'
     end
+  end
+
+  def confirm
+   @post = Post.new(post_params)
+   render :new if @post.invalid?
   end
 
   private

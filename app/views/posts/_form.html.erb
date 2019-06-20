@@ -1,0 +1,12 @@
+<%= form_with(model:@post,local:true,url:coose_new_or_edit) do |f| %>
+<%= f.label:title %>
+<%= f.text_field:title %>
+
+<%= f.label:content %>
+<%= f.text_field:content %>
+
+
+<%= f.submit "newpost" %>
+
+<% end %>
+<%= link_to "postslist", posts_path %>

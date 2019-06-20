@@ -1,0 +1,21 @@
+<h1>確認</h1>
+<%= form_with(model:@post,local:true) do |f| %>
+<%= f.hidden_field:title %>
+<%= f.hidden_field:content %>
+
+<p><%= @post.title %></p>
+<p><%= @post.content %></p>
+
+<%= f.submit "newpost" %>
+
+<% end %>
+
+<%= form_with(model:@post,local:true,url:new_post_path,method: :'get') do |f| %>
+<%= f.hidden_field:title %>
+<%= f.hidden_field:content %>
+<%= f.submit "back" ,name:'back'%>
+
+<% end %>
+
+
+<%= link_to "postslist", posts_path %>
