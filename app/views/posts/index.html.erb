@@ -1,12 +1,13 @@
 <% @posts.each do |post| %>
 <div>
-<%= post.title %>
-<%= post.content %>
+<P>タイトル：<%= post.title %></p>
+<P>コンテンツ：<%= post.content %></p>
+<P>名前：<%= User.find_by(id: post.user_id).name %></p>
 <div>
 
 <%= link_to "edit", edit_post_path(post.id) %>
 <%= link_to "show", post_path(post.id) %>
-<%= link_to "delete", post_path(post.id),method: :delete %>
+<%= link_to "delete", post_path(post.id),data:{confirm:'削除しますか'},method: :delete %>
 
 <% end %>
 <%= link_to "newpost", new_post_path %>

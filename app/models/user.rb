@@ -3,4 +3,5 @@ class User < ApplicationRecord
   validates :email, presence:true, uniqueness:true
   before_validation{email.downcase!}
   has_secure_password
+  has_many :posts
 end
