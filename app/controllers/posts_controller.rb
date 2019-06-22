@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post,only:[:show,:edit,:update,:destroy]
+  before_action :set_post,only:[:show,:edit,:update,:destroy,:edit]
 
   def index
     @posts = Post.all
@@ -24,15 +24,13 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice:"delete"
+    redirect_to posts_path, notice:"削除しました"
   end
 
   def edit
-    @post = Post.new(post_params)
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def update
