@@ -5,6 +5,9 @@
 
 <p><%= @post.title %></p>
 <p><%= @post.content %></p>
+<p><%= image_tag(@post.image.url)if @post.image&&@post.image.url %></p>
+<p><%= f.file_field :image %></p>
+<p><%= f.hidden_field :image_cache %></p>
 
 <%= f.submit "newpost" %>
 
@@ -13,6 +16,7 @@
 <%= form_with(model:@post,local:true,url:new_post_path,method: :'get') do |f| %>
 <%= f.hidden_field:title %>
 <%= f.hidden_field:content %>
+<%= f.hidden_field :image_cache %>
 <%= f.submit "back" ,name:'back'%>
 
 <% end %>

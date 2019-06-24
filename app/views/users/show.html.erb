@@ -1,2 +1,4 @@
 <h1>show</h1>
 <%= @user.name %>
+<%= image_tag(@user.image.url)if @user.image&& @user.image.url %>
+<%= link_to "edit", edit_user_path(@user.id) %>

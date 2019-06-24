@@ -1,4 +1,9 @@
 <%= form_with(model:@post,local:true,url:coose_new_or_edit) do |f| %>
+<%= f.label :image %>
+<%= image_tag(@post.image.url)if @post.image&&@post.image.url %>
+<%= f.file_field :image %>
+<%= f.hidden_field :image_cache %>
+
 <%= f.label:title %>
 <%= f.text_field:title %>
 
