@@ -13,6 +13,7 @@
      <%= content_tag(:div, value, class:"#{key}") %>
      <% end %>
      <% if logged_in? %>
+     <%= current_user.name %>
      <%= link_to "Profile",user_path(current_user.id)%>
      <%= link_to "Logout",session_path(current_user.id),method: :delete %>
      <%= link_to "postslist", posts_path %>

@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_post,only:[:show,:edit,:update,:destroy,:edit]
+    before_action :access_user
+    before_action :user_edit,only:[:edit,:update,:destroy]
+    before_action :set_post,only:[:show,:edit,:update,:destroy,:user_edit]
 
   def index
     @posts = Post.all
@@ -47,6 +49,12 @@ class PostsController < ApplicationController
    render :new if @post.invalid?
   end
 
+  def user_edit
+    if @post.user_id != current_user.id
+      render 'posts_path',notice:"権限がありません"
+    end
+  end
+
   private
   def post_params
   params.require(:post).permit(:title,:content,:user_id,:image,:image_cashe)
@@ -55,4 +63,7 @@ class PostsController < ApplicationController
   def set_post
   @post = Post.find(params[:id])
   end
+
+
+
 end
