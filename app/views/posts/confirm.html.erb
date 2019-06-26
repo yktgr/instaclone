@@ -1,15 +1,14 @@
 <h1>確認</h1>
 <%= form_with(model:@post,local:true) do |f| %>
-<%= f.hidden_field:title %>
-<%= f.hidden_field:content %>
 
-<p><%= @post.title %></p>
-<p><%= @post.content %></p>
-<p><%= image_tag(@post.image.url)if @post.image&&@post.image.url %></p>
-<p><%= f.file_field :image %></p>
+
+<p><%= image_tag(@post.image.url) if @post.image&&@post.image.url %></p>
 <p><%= f.hidden_field :image_cache %></p>
-
-<%= f.submit "newpost" %>
+<%= f.hidden_field:title %>
+<p><%= @post.title %></p>
+<%= f.hidden_field:content %>
+<p><%= @post.content %></p>
+<%= f.submit "投稿" %>
 
 <% end %>
 
@@ -17,9 +16,8 @@
 <%= f.hidden_field:title %>
 <%= f.hidden_field:content %>
 <%= f.hidden_field :image_cache %>
-<%= f.submit "back" ,name:'back'%>
-
+<%= f.submit "戻る" ,name:'back'%>
 <% end %>
 
 
-<%= link_to "postslist", posts_path %>
+<%= link_to "投稿", posts_path %>

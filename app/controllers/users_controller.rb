@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action:access_user,only:[:show,:edit,:update]
+  before_action:edit_user,only:[:edit,:update,:destroy]
   before_action:set_user,only:[:show,:edit,:update]
-  before_action:login_require,only:[:show,:edit,:update]
 
   def new
     @user = User.new
@@ -25,6 +25,8 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
     redirect_to user_path, notice:"編集しました"
+  else
+
     end
   end
 
@@ -35,16 +37,22 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name,:email,:password,:password_confirmation,:image,:image_cache)
+  params.require(:user).permit(:name,:email,:password,:password_confirmation,:image,:image_cache)
   end
 
   def set_user
-    @user = User.find(params[:id])
+  @user = User.find(params[:id])
   end
 
-  def login_require
-    redirect_to sessions unless current_user
+  def edit_user
+  @user = User.find_by(id: params[:id])
+  if current_user.id != @user.id
+  flash[:notice] = "権限がありません"
+  redirect_to posts_path
   end
+  
+end
+
 
 
 end
