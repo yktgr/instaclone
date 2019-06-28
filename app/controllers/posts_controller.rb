@@ -18,7 +18,8 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to posts_path
+      ContactMailer.contact_mail(@post).deliver
+      redirect_to posts_path, notice: 'Contact was successfully created.'
     else
       render 'new'
     end
@@ -51,6 +52,7 @@ class PostsController < ApplicationController
    render :new if @post.invalid?
   end
 
+
   private
   def post_params
   params.require(:post).permit(:title,:content,:user_id,:image,:image_cache)
@@ -67,5 +69,6 @@ class PostsController < ApplicationController
   redirect_to posts_path
   end
   end
+
 
 end
