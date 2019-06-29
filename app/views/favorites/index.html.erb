@@ -1,0 +1,13 @@
+
+
+<h1>お気に入り一覧</h1>
+<%  @favorites.each do |pic|  %>
+<%  @post = Post.find(pic.post_id) %>
+
+<div>
+<%= image_tag(@post.image.url) if @post.image&&@post.image.url%>
+<%=  @post.title %>
+<%=  @post.content %>
+</div>
+
+<% end %>

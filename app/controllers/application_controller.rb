@@ -8,4 +8,13 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
+
+  def edit_user
+    @user = User.find_by(id: params[:id])
+    if current_user.id != @user.id
+      flash[:notice] = "権限がありません"
+      redirect_to posts_path
+    end
+  end
+
 end

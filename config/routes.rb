@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   end
   resources:sessions,only:[:new,:create,:destroy]
   resources:users
-  resources:favorites,only:[:create,:destroy]
-  resources:contacts,only:[:new,:create]
+  resources:favorites,only:[:index,:create,:destroy]
   mount LetterOpenerWeb::Engine, at: "/inbox" if Rails.env.development?
-
 end

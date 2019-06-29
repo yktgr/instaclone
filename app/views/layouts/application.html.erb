@@ -3,24 +3,27 @@
   <head>
     <title>In</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% if logged_in? %>
+      <table>
+        <td><%= current_user.name %></td>
+        <td><%= link_to "投稿一覧", posts_path %></td>
+        <td><%= link_to "マイページ",user_path(current_user.id)%></td>
+        <td><%= link_to "ログアウト",session_path(current_user.id),method: :delete %></td>
+      </table>
+    <% else %>
+      <table>
+        <td><%= link_to "サインアップ",new_user_path %></td>
+        <td><%= link_to "ログイン",new_session_path %></td>
+      </table>
+    <% end %>
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-     <%= content_tag(:div, value, class:"#{key}") %>
-     <% end %>
-     <% if logged_in? %>
-     <%= current_user.name %>
-     <%= link_to "Profile",user_path(current_user.id)%>
-     <%= link_to "Logout",session_path(current_user.id),method: :delete %>
-     <%= link_to "postslist", posts_path %>
-     <% else %>
-     <%= link_to "Signup",new_user_path %>
-     <%= link_to "Login",new_session_path %>
-     <% end %>
-    <%= yield %>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class:"#{key}") %>
+  <% end %>
+  <%= yield %>
   </body>
 </html>
