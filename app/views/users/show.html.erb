@@ -1,5 +1,10 @@
-<h1>プロフィール</h1>
-<%= image_tag(@user.image.url)if @user.image&& @user.image.url %>
-<%= @user.name %>
-<%= link_to "編集", edit_user_path(@user.id) %>
-<%= link_to "お気に入り一覧", favorites_path %>
+<h1>Profile</h1>
+<div class= "offset-3 col-md-3">
+<table id = "post">
+  <tr><td><%= image_tag(@user.image.url)if @user.image&& @user.image.url %></td></tr>
+  <tr><td><%= @user.name %></td></tr>
+  <tr><td><%= link_to "Edit", edit_user_path(@user.id) ,class:'btn btn-primary'%></td>
+  <td><%= link_to "Favorites", favorites_path ,class:'btn btn-primary' %></td></tr>
+</table>
+
+</div>

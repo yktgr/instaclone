@@ -1,16 +1,21 @@
+<h1>All Posts</h1>
+<div class= "offset-3 col-md-3">
+
 <% @posts.each do |post| %>
-<div>
-<P><%= image_tag(post.image.url) if post.image&&post.image.url%></p>
-<P>タイトル：<%= post.title %></p>
-<P>コンテンツ：<%= post.content%></p>
-<P>名前：<%= User.find_by(id: post.user_id).name %></p>
-<P><%= link_to "show", post_path(post.id) %></p>
+<table id = "post">
+  <tr><td><%= image_tag(post.image.url) if post.image&&post.image.url%></td></tr>
+  <tr><th>Title：</th><td>T<%= post.title %></td></tr>
+  <tr><th>Content：</th><td><%= post.content%></td></tr>
+  <tr><th>User：</th><td><%= User.find_by(id: post.user_id).name %></td></tr>
+</table>
+
+<div  id = "post">
+<%= link_to "Show", post_path(post.id), class:'btn btn-primary' %>
+  <% if post.user_id == current_user.id %>
+    <%= link_to "Edit", edit_post_path(post.id) ,class:'btn btn-primary' %>
+    <%= link_to "Delete", post_path(post.id),method: :delete ,class:'btn btn-primary' %>
+  <% end %>
 </div>
 
-<% if post.user_id == current_user.id %>
-<%= link_to "edit", edit_post_path(post.id) %>
-<%= link_to "delete", post_path(post.id),data:{confirm:'削除しますか'},method: :delete %>
 <% end %>
-<% end %>
-
-<%= link_to "投稿", new_post_path %>
+</div>

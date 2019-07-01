@@ -1,19 +1,17 @@
-<h1>Profileの編集</h1>
+<h1>PROFILE</h1>
+<div class= "offset-3 col-md-3">
 <%= form_with(model:@user,local:true,url:user_path) do |f| %>
 
-<%= f.label :image %>
-<%= image_tag(@user.image.url)if @user.image&&@user.image.url %>
-<%= f.file_field :image %>
-<%= f.hidden_field :image_cache %>
+<table id = "post">
+<tr><td><%= image_tag(@user.image.url)if @user.image&&@user.image.url %></td>
+  <td><%= f.file_field :image %></td>
+  <td><%= f.hidden_field :image_cache %></tr>
+<tr><th><%= f.label:name %></th><td><%= f.text_field:name %></td></tr>
+<tr><th><%= f.label:email %></th><td><%= f.text_field:email %></td></tr>
+<tr><th><%= f.label:password %></th><td><%= f.text_field:password %></td></tr>
+<tr><th><%= f.label:password_comfirm %></th><td><%= f.text_field:password %></td></tr>
+</table>
 
-
-<%= f.label:name %>
-<%= f.text_field:name %>
-
-<%= f.label:email %>
-<%= f.text_field:email %>
-
-<%= f.submit "edit" %>
-
-
+<%= f.submit "EDIT" ,class:'btn btn-primary'%>
 <% end %>
+</div>

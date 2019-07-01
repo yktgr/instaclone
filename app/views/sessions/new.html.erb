@@ -1,10 +1,13 @@
 <h1>Login</h1>
+<div class = "offset-md-3 col-mid-3">
 <%= form_with(scope: :session,url:sessions_path,local:true) do |f| %>
-<%= f.label :email %>
-<%= f.email_field :email %>
+<table>
+<tr><td><%= f.label :email %></td></tr>
+<tr><td><%= f.email_field :email %></td></tr>
+<tr><td><%= f.label :password %></td></tr>
+<tr><td><%= f.password_field :password %></td></tr>
+</table>
 
-<%= f.label :password %>
-<%= f.password_field :password %>
-
-<%= f.submit "ログイン" %>
+<%= f.submit "Login" , class:'btn btn-primary' %>
 <% end %>
+</div>

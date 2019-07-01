@@ -11,5 +11,53 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require bootstrap/dist/css/bootstrap.min
  *= require_self
  */
+
+html{
+  font-size: 15px;
+  width: 100%;
+}
+
+header{
+  background-color: white;
+  height: 60px;
+}
+
+
+body{
+  background-color: #F5F5F5;
+}
+
+
+ .header li{
+   line-height: 60px;
+   vertical-align: middle;
+   float: left;
+   list-style: none;
+   margin:5px 5px 5px 0px;
+   padding-right: 15px;
+   padding-left:15px;
+
+
+ }
+
+
+ #navi{
+   float:right;
+   font-size: 1.2rem;
+   color: #555555;
+   font-weight: bold;
+
+ }
+
+ #post{
+   margin: 0px 10px 10px 0px;
+ }
+
+ #fav_post{
+   margin: 0px 10px 10px 0px;
+   color: blue;
+
+ }

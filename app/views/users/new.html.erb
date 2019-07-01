@@ -1,22 +1,17 @@
+<h1>Create User</h1>
+<div class= "offset-3 col-md-3">
 <%= form_with(model:@user,local:true) do |f| %>
+<table>
+<tr><td><%= image_tag(@user.image.url)if @user.image&&@user.image.url %></td>
+<td><%= f.file_field :image %></td>
+<td><%= f.hidden_field :image_cache %></tr>
+<tr><th><%= f.label:name %></th><td><%= f.text_field:name %></td></tr>
+<tr><th><%= f.label:email %></th><td><%= f.text_field:email %></td></tr>
+<tr><th><%= f.label:password %></th><td><%= f.text_field:password %></td></tr>
+<tr><th><%= f.label:password_comfirm %></th><td><%= f.text_field:password %></td></tr>
+</table>
 
-<%= f.label :image %>
-<%= image_tag(@user.image.url)if @user.image&&@user.image.url %>
-<%= f.file_field :image %>
-<%= f.hidden_field :image_cache %>
-
-<%= f.label:name %>
-<%= f.text_field:name %>
-
-<%= f.label:email %>
-<%= f.text_field:email %>
-
-<%= f.label:password %>
-<%= f.text_field:password%>
-
-<%= f.label:password_confirmation %>
-<%= f.text_field:password_confirmation %>
-
-<%= f.submit "createuser" %>
+<%= f.submit "Create User" ,class:'btn btn-primary' %>
 
 <% end %>
+</div>

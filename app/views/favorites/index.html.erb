@@ -1,13 +1,12 @@
-
-
-<h1>お気に入り一覧</h1>
-<%  @favorites.each do |pic|  %>
-<%  @post = Post.find(pic.post_id) %>
-
-<div>
-<%= image_tag(@post.image.url) if @post.image&&@post.image.url%>
-<%=  @post.title %>
-<%=  @post.content %>
-</div>
-
+<h1>Favorites</h1>
+<div class = "offset-md-3 col-mid-3">
+  <% @favorites.each do |pic|  %>
+  <%  post = Post.find(pic.post_id) %>
+  <%= image_tag(post.image.url) if post.image&& post.image.url%>
+  <table id = "fav_post">
+    <tr><th>Title：</th><td><%= post.title %></td></tr>
+    <tr><th>Content：</th><td><%= post.content%></td></tr>
+    <tr><th>User：</th><td><%= User.find_by(id: post.user_id).name %></td></tr>
+  </table>
 <% end %>
+</div>
