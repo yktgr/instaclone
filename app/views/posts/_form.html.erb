@@ -1,9 +1,9 @@
 <div class= "offset-3 col-md-3">
 <%= form_with(model:@post,local:true,url:coose_new_or_edit) do |f| %>
 <table id = "post">
-<tr><td><%= image_tag(@post.image.url)if @post.image&&@post.image.url %></td></tr>
-<tr><td><%= f.file_field :image %></td></tr>
-<tr><td><%= f.hidden_field :image_cache %></td></tr>
+<tr><th></th><td><%= image_tag(@post.image.url)if @post.image&&@post.image.url %></td></tr>
+<tr><th></th><td><%= f.file_field :image %></td></tr>
+<tr><th></th><td><%= f.hidden_field :image_cache %></td></tr>
 <tr><th><%= f.label:Title %></th><td><%= f.text_field:title %></td></tr>
 <tr><th><%= f.label:Content %></th><td><%= f.text_field:content %></td></tr>
 </table>

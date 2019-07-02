@@ -11,7 +11,7 @@
   </table>
   <%= f.submit "POST" ,class:'btn btn-primary'%>
 <% end %>
-</div>
+
 
 
 <%= form_with(model:@post,local:true,url:new_post_path,method: :'get') do |f| %>
@@ -20,3 +20,4 @@
 <%= f.hidden_field :image_cache %>
 <%= f.submit "BACK" ,name:'back',class:'btn btn-primary'%>
 <% end %>
+</div>

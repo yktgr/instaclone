@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       ContactMailer.contact_mail(@post).deliver
-      redirect_to posts_path, notice: 'Contact was successfully created.'
+      redirect_to posts_path
     else
       render 'new'
     end
