@@ -7,8 +7,8 @@
 <td><%= f.hidden_field :image_cache %></tr>
 <tr><th><%= f.label:name %></th><td><%= f.text_field:name %></td></tr>
 <tr><th><%= f.label:email %></th><td><%= f.text_field:email %></td></tr>
-<tr><th><%= f.label:password %></th><td><%= f.text_field:password %></td></tr>
-<tr><th><%= f.label:password_comfirm %></th><td><%= f.text_field:password %></td></tr>
+<tr><th><%= f.label:password %></th><td><%= f.password_field:password %></td></tr>
+<tr><th><%= f.label:password_comfirm %></th><td><%= f.password_field:password %></td></tr>
 </table>
 
 <%= f.submit "Create User" ,class:'btn btn-primary' %>
