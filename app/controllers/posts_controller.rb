@@ -9,25 +9,25 @@ class PostsController < ApplicationController
 
   def new
     if params[:back]
-    @post = Post.new(post_params)
+      @post = Post.new(post_params)
     else
-    @post = Post.new
+      @post = Post.new
     end
   end
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save
-      ContactMailer.contact_mail(@post).deliver
-      redirect_to posts_path
-    else
-      render 'new'
+      if @post.save
+        ContactMailer.contact_mail(@post).deliver
+        redirect_to posts_path
+      else
+        render 'new'
     end
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice:"削除しました"
+      redirect_to posts_path, notice:"削除しました"
   end
 
   def edit
@@ -36,9 +36,9 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-    redirect_to posts_path, notice:"編集しました"
+      redirect_to posts_path, notice:"編集しました"
     else
-    render 'edit'
+      render 'edit'
     end
   end
 
@@ -48,8 +48,8 @@ class PostsController < ApplicationController
 
 
   def confirm
-   @post = current_user.posts.build(post_params)
-   render :new if @post.invalid?
+    @post = current_user.posts.build(post_params)
+     render :new if @post.invalid?
   end
 
 

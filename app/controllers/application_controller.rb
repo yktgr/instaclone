@@ -11,10 +11,10 @@ class ApplicationController < ActionController::Base
 
   def edit_user
     @user = User.find_by(id: params[:id])
-    if current_user.id != @user.id
-      flash[:notice] = "権限がありません"
-      redirect_to posts_path
-    end
+      if current_user.id != @user.id
+        flash[:notice] = "権限がありません"
+        redirect_to posts_path
+      end
   end
 
 end

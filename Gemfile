@@ -19,6 +19,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'faker'
 gem 'letter_opener_web'
+gem 'rails-i18n'
 
 group :development, :test do
 
