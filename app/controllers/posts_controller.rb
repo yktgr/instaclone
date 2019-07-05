@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-      redirect_to posts_path, notice:"削除しました"
+    redirect_to posts_path, notice:"削除しました"
   end
 
   def edit
@@ -46,28 +46,27 @@ class PostsController < ApplicationController
     @favorite = current_user.favorites.find_by(post_id:@post.id)
   end
 
-
   def confirm
     @post = current_user.posts.build(post_params)
-     render :new if @post.invalid?
+    render :new if @post.invalid?
   end
 
-
   private
+
   def post_params
-  params.require(:post).permit(:title,:content,:user_id,:image,:image_cache)
+    params.require(:post).permit(:title,:content,:user_id,:image,:image_cache)
   end
 
   def set_post
-  @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def edit_post
-  @post = Post.find_by(id: params[:id])
-  if current_user.id != @post.user_id
-  flash[:notice] = "権限がありません"
-  redirect_to posts_path
-  end
+    @post = Post.find_by(id: params[:id])
+    if current_user.id != @post.user_id
+      flash[:notice] = "権限がありません"
+      redirect_to posts_path
+    end
   end
 
 

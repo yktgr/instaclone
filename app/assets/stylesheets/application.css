@@ -25,11 +25,9 @@ header{
   height: 60px;
 }
 
-
 body{
   background-color: #F5F5F5;
 }
-
 
  .header li{
    line-height: 60px;
@@ -40,7 +38,6 @@ body{
    padding-right:15px;
    padding-left:15px;
  }
-
 
  #navi{
    float:right;

@@ -15,7 +15,6 @@ Rails.application.configure do
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
-
     config.cache_store = :memory_store
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.seconds.to_i}"
@@ -26,11 +25,10 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: 'kinder-worms-64576.herokuapp.com' }
-  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.delivery_method =  :letter_opener_web
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
