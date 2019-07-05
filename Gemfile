@@ -21,9 +21,7 @@ gem 'letter_opener_web'
 gem 'rails-i18n'
 
 group :development, :test do
-
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
