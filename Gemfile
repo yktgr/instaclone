@@ -17,13 +17,13 @@ gem 'bcrypt', '~> 3.1.13'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'faker'
-gem 'letter_opener_web'
 gem 'rails-i18n'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'letter_opener_web'
 end
 
 group :development do
