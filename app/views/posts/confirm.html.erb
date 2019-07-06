@@ -1,23 +1,21 @@
 <h1>Confirm</h1>
-<div>
-<%= form_with(model:@post,local:true) do |f| %>
-  <table>
-  <tr><td><%= image_tag(@post.image.url) if @post.image&&@post.image.url %></td></tr>
-  <tr><td><%= f.hidden_field :image_cache %></td></tr>
-    <tr><th>Title</th><td><%= @post.title %></td></tr>
-    <tr><th>Content</th><td><%= @post.content %></td></tr>
-    <tr><td><%= f.hidden_field:title %></td></tr>
-    <tr><td><%= f.hidden_field:content %></td></tr>
-  </table>
-  <%= f.submit "POST" ,class:'btn btn-primary'%>
-<% end %>
+  <div>
+    <%= form_with(model:@post,local:true) do |f| %>
+    <table>
+      <tr><td><%= image_tag(@post.image.url) if @post.image&&@post.image.url %></td></tr>
+      <tr><td><%= f.hidden_field :image_cache %></td></tr>
+      <tr><th>Title</th><td><%= @post.title %></td></tr>
+      <tr><th>Content</th><td><%= @post.content %></td></tr>
+      <tr><td><%= f.hidden_field:title %></td></tr>
+      <tr><td><%= f.hidden_field:content %></td></tr>
+    </table>
+    <%= f.submit "POST" ,class:'btn btn-primary'%>
+    <% end %>
 
-
-
-<%= form_with(model:@post,local:true,url:new_post_path,method: :'get') do |f| %>
-<%= f.hidden_field:title %>
-<%= f.hidden_field:content %>
-<%= f.hidden_field :image_cache %>
-<%= f.submit "BACK" ,name:'back',class:'btn btn-primary'%>
-<% end %>
-</div>
+    <%= form_with(model:@post,local:true,url:new_post_path,method: :'get') do |f| %>
+    <%= f.hidden_field:title %>
+    <%= f.hidden_field:content %>
+    <%= f.hidden_field :image_cache %>
+    <%= f.submit "BACK" ,name:'back',class:'btn btn-primary'%>
+    <% end %>
+  </div>

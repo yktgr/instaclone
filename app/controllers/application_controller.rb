@@ -16,5 +16,4 @@ class ApplicationController < ActionController::Base
         redirect_to posts_path
       end
   end
-
 end

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-    before_action :access_user
-    before_action:edit_post,only:[:edit,:update,:destroy]
-    before_action :set_post,only:[:show,:edit,:update,:destroy]
+  before_action :access_user
+  before_action:edit_post,only:[:edit,:update,:destroy]
+  before_action :set_post,only:[:show,:edit,:update,:destroy]
 
   def index
     @posts = Post.all
@@ -68,6 +68,5 @@ class PostsController < ApplicationController
       redirect_to posts_path
     end
   end
-
 
 end

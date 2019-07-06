@@ -1,23 +1,22 @@
 <h1>PROFILE</h1>
+  <%= form_with(model:@user,local:true,url:user_path) do |f| %>
+    <% if @user.errors.any? %>
+      <div class= "alert alert-warning" >
+        <% @user.errors.full_messages.each do |msg| %>
+          <p><%= msg %></p>
+        <% end %>
+      </div>
+    <% end %>
 
-<%= form_with(model:@user,local:true,url:user_path) do |f| %>
-  <% if @user.errors.any? %>
-    <div class= "alert alert-warning" >
-      <% @user.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-      <% end %>
-  </div>
- <% end %>
-<div class= "offset-3 col-md-3">
-<table id = "post">
-<tr><td><%= image_tag(@user.image.url)if @user.image&&@user.image.url %></td>
-    <td><%= f.file_field :image %></td>
-    <td><%= f.hidden_field :image_cache %></tr>
-<tr><th><%= f.label:name %></th><td><%= f.text_field:name %></td></tr>
-<tr><th><%= f.label:email %></th><td><%= f.email_field:email %></td></tr>
-<tr><th><%= f.label:password %></th><td><%= f.password_field:password %></td></tr>
-</table>
-
-<%= f.submit "EDIT" ,class:'btn btn-primary'%>
-<% end %>
+    <div class= "offset-3 col-md-3">
+      <table id = "post">
+        <tr><td><%= image_tag(@user.image.url)if @user.image&&@user.image.url %></td>
+        <td><%= f.file_field :image %></td>
+        <td><%= f.hidden_field :image_cache %></tr>
+        <tr><th><%= f.label:name %></th><td><%= f.text_field:name %></td></tr>
+        <tr><th><%= f.label:email %></th><td><%= f.email_field:email %></td></tr>
+        <tr><th><%= f.label:password %></th><td><%= f.password_field:password %></td></tr>
+      </table>
+  <%= f.submit "EDIT" ,class:'btn btn-primary'%>
+  <% end %>
 </div>
